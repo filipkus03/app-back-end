@@ -1,0 +1,21 @@
+﻿<Window x:Class="app_back_end.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:app_back_end"
+        mc:Ignorable="d"
+        Background="#2C2C2C"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox Name="Login" Foreground="White" SelectionBrush="White"  Padding="0,5" Width="226" BorderThickness="0,0,0,1" HorizontalAlignment="Center" Background="#2C2C2C"  Text="" Margin="0,146,0,240" BorderBrush="AliceBlue" />
+        <Button Name="LoginButton" Content="login" FontSize="20" Foreground="#2C2C2C" Background="AliceBlue" HorizontalAlignment="Center" Margin="0,317,0,0" VerticalAlignment="Top" Height="38" Width="152" Click="LoginButton_Click"/>
+        <TextBlock Foreground="White" FontSize="50" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Zaloguj się" VerticalAlignment="Top" Height="92" Width="244"/>
+        <TextBlock Foreground="White" FontSize="20" HorizontalAlignment="Center" Margin="0,114,0,0" TextWrapping="Wrap" Text="LOGIN" VerticalAlignment="Top" Height="26" Width="60"/>
+        <TextBox Name="Password" Foreground="White" Padding="0,5" Width="226" BorderThickness="0,0,0,1" HorizontalAlignment="Center" Background="#2C2C2C" Text="" Margin="0,249,0,137" BorderBrush="AliceBlue"/>
+        <TextBlock Foreground="White" FontSize="20" HorizontalAlignment="Center" Margin="0,217,0,0" TextWrapping="Wrap" Text="PASWORD" VerticalAlignment="Top" Height="26" Width="96"/>
+        <TextBlock Name="Wrong_password" Visibility="Collapsed" Foreground="White" FontSize="20" HorizontalAlignment="Center" Margin="0,380,0,0" TextWrapping="Wrap" Text="WRONG PASSWORD" VerticalAlignment="Top" Height="26" Width="187"/>
+
+
+    </Grid>
+</Window>

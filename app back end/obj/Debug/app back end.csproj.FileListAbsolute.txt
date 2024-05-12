@@ -1,0 +1,18 @@
+C:\Users\Lenovo\Desktop\app back end\app back end\bin\Debug\app back end.exe.config
+C:\Users\Lenovo\Desktop\app back end\app back end\bin\Debug\app back end.exe
+C:\Users\Lenovo\Desktop\app back end\app back end\bin\Debug\app back end.pdb
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app back end.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\MainWindow.g.cs
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\App.g.cs
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app back end_MarkupCompile.cache
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app back end_MarkupCompile.lref
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\MainWindow.baml
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app back end.g.resources
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app_back_end.Properties.Resources.resources
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app back end.csproj.GenerateResource.cache
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app back end.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app back end.exe
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app back end.pdb
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app back end_Content.g.cs
+C:\Users\Lenovo\Desktop\app back end\app back end\bin\Debug\data\db_local.mdf
+C:\Users\Lenovo\Desktop\app back end\app back end\bin\Debug\data\db_local_log.ldf
