@@ -16,3 +16,9 @@ C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app back end.pdb
 C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\app back end_Content.g.cs
 C:\Users\Lenovo\Desktop\app back end\app back end\bin\Debug\data\db_local.mdf
 C:\Users\Lenovo\Desktop\app back end\app back end\bin\Debug\data\db_local_log.ldf
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\main_admin.g.cs
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\kierownik\main_registration_car.g.cs
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\magazyn\main_magazyn.g.cs
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\kierownik\main_registration_car.baml
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\magazyn\main_magazyn.baml
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\main_admin.baml

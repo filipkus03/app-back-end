@@ -1,4 +1,5 @@
-﻿using System;
+﻿using app_back_end.admin;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace app_back_end
 {
     /// <summary>
@@ -25,7 +27,7 @@ namespace app_back_end
         {
             InitializeComponent();
         }
-        
+
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
@@ -37,25 +39,50 @@ namespace app_back_end
             {
                 connection.Open();
 
-                string query = "SELECT COUNT(*) FROM Tbl_Logins WHERE Login = @Login AND Password = @Password";
+                string query = "SELECT Role FROM Tbl_Logins WHERE Login = @Login AND Password = @Password";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Login", login);
                     command.Parameters.AddWithValue("@Password", password);
 
-                    int count = (int)command.ExecuteScalar();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            string role = reader["Role"].ToString();
 
-                    if (count > 0)
-                    {
-                        Close();
-                    }
-                    else
-                    {
-                        Wrong_password.Visibility = Visibility.Visible;
-                        // Nieprawidłowe dane logowania
+                            // Zalogowano pomyślnie, otwórz odpowiednie okno w zależności od roli
+                            switch (role)
+                            {
+                                case "admin":
+                                    Window AdminWindow = new main_admin(this);
+                                    AdminWindow.Show();
+                                    AdminWindow.Focus();
+                                    break;
+                                case "kierownik":
+                                    // Kod dla kierownika
+                                    break;
+                                case "magazyn":
+                                    // Kod dla magazyniera
+                                    break;
+                                case "mechanik":
+                                    // Kod dla mechanika
+                                    break;
+                            }
+
+                            // Ukryj okno logowania
+                            Visibility = Visibility.Hidden;
+                        }
+                        else
+                        {
+                            // Nieprawidłowe dane logowania
+                            Wrong_password.Visibility = Visibility.Visible;
+                        }
                     }
                 }
             }
         }
+    
     }
 }

@@ -1,0 +1,13 @@
+﻿<Window x:Class="app_back_end.admin.main_admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:app_back_end.admin"
+        mc:Ignorable="d"
+        Title="main_admin" Height="450" Width="800">
+    <Grid>
+        <Label  Content="Admin" HorizontalAlignment="Left" Margin="289,0,0,0" VerticalAlignment="Center" Height="70" Width="180"/>
+
+    </Grid>
+</Window>
