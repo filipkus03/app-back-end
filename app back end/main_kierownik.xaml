@@ -1,0 +1,17 @@
+﻿<Window x:Class="app_back_end.main_kierownik"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:app_back_end"
+        mc:Ignorable="d"
+        Title="main_kierownik" Height="450" Width="800">
+    <Grid>
+        <Button Name="rezerwacja" Content="Rezerwacja" HorizontalAlignment="Left" Margin="50,33,0,0" VerticalAlignment="Top" Height="43" Width="92" Click="Button_Click"/>
+        <Button Name="zamowienie"  Content="zamówienie" HorizontalAlignment="Left" Margin="192,33,0,0" VerticalAlignment="Top" Height="43" Width="92" Click="zamowienie_Click"/>
+        <Button Name="pracownicy" Content="pracownicy" HorizontalAlignment="Left" Margin="334,33,0,0" VerticalAlignment="Top" Height="43" Width="92"/>
+        <Button Name="klienci" Content="klienci" HorizontalAlignment="Left" Margin="476,33,0,0" VerticalAlignment="Top" Height="43" Width="92"/>
+        <Button Name="material" Content="materiał" HorizontalAlignment="Left" Margin="618,33,0,0" VerticalAlignment="Top" Height="43" Width="92"/>
+
+    </Grid>
+</Window>

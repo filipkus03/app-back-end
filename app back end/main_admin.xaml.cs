@@ -30,5 +30,9 @@ namespace app_back_end.admin
         {
             InitializeComponent();
         }
+
+        
+
+       
     }
 }

@@ -70,15 +70,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="material.xaml.cs">
+      <DependentUpon>material.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="rezerwacja.xaml.cs">
+      <DependentUpon>rezerwacja.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="zamowienie.xaml.cs">
+      <DependentUpon>zamowienie.xaml</DependentUpon>
+    </Compile>
+    <Page Include="kierownik_pracownicy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="klienci.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="main_admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="kierownik\main_registration_car.xaml">
+    <Page Include="main_kierownik.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="magazyn\main_magazyn.xaml">
+    <Page Include="main_magazyn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -86,6 +103,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="kierownik_pracownicy.xaml.cs">
+      <DependentUpon>kierownik_pracownicy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="klienci.xaml.cs">
+      <DependentUpon>klienci.xaml</DependentUpon>
+    </Compile>
     <Compile Include="main_admin.xaml.cs">
       <DependentUpon>main_admin.xaml</DependentUpon>
     </Compile>
@@ -93,18 +116,37 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="kierownik\main_registration_car.xaml.cs">
-      <DependentUpon>main_registration_car.xaml</DependentUpon>
+    <Compile Include="main_kierownik.xaml.cs">
+      <DependentUpon>main_kierownik.xaml</DependentUpon>
     </Compile>
-    <Compile Include="magazyn\main_magazyn.xaml.cs">
+    <Compile Include="main_magazyn.xaml.cs">
       <DependentUpon>main_magazyn.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="main_mechanic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="material.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="rezerwacja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="zamowienie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="main_mechanic.xaml.cs">
+      <DependentUpon>main_mechanic.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -151,9 +193,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="admin\" />
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

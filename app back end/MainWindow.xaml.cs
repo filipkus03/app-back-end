@@ -1,4 +1,5 @@
 ﻿using app_back_end.admin;
+using app_back_end.magazyn;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -61,13 +62,20 @@ namespace app_back_end
                                     AdminWindow.Focus();
                                     break;
                                 case "kierownik":
-                                    // Kod dla kierownika
+                                    Window KierownikWindow = new main_kierownik(this);
+                                    KierownikWindow.Show();
+                                    KierownikWindow.Focus();
                                     break;
                                 case "magazyn":
-                                    // Kod dla magazyniera
+                                    Window MagazynWindow = new main_magazyn(this);
+                                    MagazynWindow.Show();
+                                    MagazynWindow.Focus();
                                     break;
                                 case "mechanik":
-                                    // Kod dla mechanika
+                                    
+                                    Window MechanicWindow = new main_mechanic(this);
+                                    MechanicWindow.Show();
+                                    MechanicWindow.Focus();
                                     break;
                             }
 

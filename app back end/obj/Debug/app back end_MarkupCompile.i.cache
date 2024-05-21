@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Lenovo\Desktop\app back end\app back end\App.xaml
-4-680728959
+101759963169
 2-953263904
-9-1762837541
+15335713675
 13-1310406943
-main_admin.xaml;kierownik\main_registration_car.xaml;magazyn\main_magazyn.xaml;MainWindow.xaml;
+kierownik_pracownicy.xaml;klienci.xaml;main_admin.xaml;main_kierownik.xaml;main_magazyn.xaml;MainWindow.xaml;main_mechanic.xaml;material.xaml;rezerwacja.xaml;zamowienie.xaml;
 
-False
+True
 
