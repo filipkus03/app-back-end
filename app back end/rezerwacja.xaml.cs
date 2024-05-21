@@ -20,17 +20,18 @@ namespace app_back_end
     /// </summary>
     public partial class rezerwacja : Window
     {
-        public rezerwacja(Window window = null)
+        private main_kierownik mainKierownikWindow;
+        public rezerwacja(main_kierownik mainKierownikWindow)
         {
-            Window main_kierownik = window;
             InitializeComponent();
-            Focus();
+            this.mainKierownikWindow = mainKierownikWindow;
         }
         private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Lenovo\Desktop\app back end\app back end\data\db_local.mdf;Integrated Security=True";
         public rezerwacja()
         {
             InitializeComponent();
-        }
+            
+    }
 
         private void Zarezerwuj_Click(object sender, RoutedEventArgs e)
         {
@@ -129,6 +130,15 @@ namespace app_back_end
             {
                 WynikTextBlock.Text = "Proszę wprowadzić poprawne dane.";
             }
+        }
+
+
+        
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            // Przywracamy widoczność okna main_kierownik
+            mainKierownikWindow.Visibility = Visibility.Visible;
         }
     }
 }

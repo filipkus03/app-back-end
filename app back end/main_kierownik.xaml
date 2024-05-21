@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:app_back_end"
         mc:Ignorable="d"
-        Title="main_kierownik" Height="450" Width="800">
+        Title="main_kierownik" Height="450" Width="800" Closed="Window_Closed">
     <Grid>
         <Button Name="rezerwacja" Content="Rezerwacja" HorizontalAlignment="Left" Margin="50,33,0,0" VerticalAlignment="Top" Height="43" Width="92" Click="Button_Click"/>
         <Button Name="zamowienie"  Content="zamówienie" HorizontalAlignment="Left" Margin="192,33,0,0" VerticalAlignment="Top" Height="43" Width="92" Click="zamowienie_Click"/>

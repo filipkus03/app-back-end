@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:app_back_end"
         mc:Ignorable="d"
-        Title="rezerwacja" Height="450" Width="800">
+        Title="rezerwacja" Height="450" Width="800" Closed="Window_Closed">
     <Grid>
         <StackPanel Margin="10">
             <Label Content="ID Części" />

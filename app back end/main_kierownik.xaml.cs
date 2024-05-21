@@ -46,5 +46,10 @@ namespace app_back_end
             Rezerwacja.Focus();
             Visibility = Visibility.Hidden;
         }
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            // Przywracamy widoczność okna main_kierownik
+            mainwindow.Visibility = Visibility.Visible;
+        }
     }
 }
