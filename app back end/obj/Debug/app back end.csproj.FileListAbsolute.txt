@@ -34,3 +34,5 @@ C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\klienci.baml
 C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\material.baml
 C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\rezerwacja.baml
 C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\zamowienie.baml
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\pracownicy.g.cs
+C:\Users\Lenovo\Desktop\app back end\app back end\obj\Debug\pracownicy.baml

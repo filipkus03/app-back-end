@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:app_back_end"
         mc:Ignorable="d"
-        Title="zamowienie" Height="450" Width="800">
+        Title="zamowienie" Height="900" Width="1000" Closed="Window_Closed">
     <Grid>
-        
+        <StackPanel Margin="10">
+            <DataGrid Name="MaterialDataGrid" AutoGenerateColumns="False" Height="200">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Części" Binding="{Binding Id_czesci}" />
+                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Nazwa}" />
+                    <DataGridTextColumn Header="Marka" Binding="{Binding Marka}" />
+                    <DataGridTextColumn Header="Miejsce" Binding="{Binding Miejsce}" />
+                    <DataGridTextColumn Header="Stan" Binding="{Binding Stan}" />
+                    <DataGridTextColumn Header="Wolne" Binding="{Binding Wolne}" />
+                    <DataGridTextColumn Header="Cena" Binding="{Binding Cena}" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Label Content="ID Części" />
+            <TextBox Name="IdCzesciTextBox" Margin="0,0,0,10" />
+            <Label Content="Nazwa" />
+            <TextBox Name="NazwaTextBox" Margin="0,0,0,10" />
+            <Label Content="Marka" />
+            <TextBox Name="MarkaTextBox" Margin="0,0,0,10" />
+            <Label Content="Miejsce" />
+            <TextBox Name="MiejsceTextBox" Margin="0,0,0,10" />
+            <Label Content="Stan" />
+            <TextBox Name="StanTextBox" Margin="0,0,0,10" />
+            <Label Content="Wolne" />
+            <TextBox Name="WolneTextBox" Margin="0,0,0,10" />
+            <Label Content="Cena" />
+            <TextBox Name="CenaTextBox" Margin="0,0,0,10" />
+
+            <Button Content="Dodaj Materiał" Click="DodajMaterial_Click" Height="38" />
+        </StackPanel>
     </Grid>
 </Window>

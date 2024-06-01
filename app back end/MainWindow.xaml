@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:app_back_end"
         mc:Ignorable="d"
         Background="#2C2C2C"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Closed="Window_Closed">
     <Grid>
         <TextBox Name="Login" Foreground="White" SelectionBrush="White"  Padding="0,5" Width="226" BorderThickness="0,0,0,1" HorizontalAlignment="Center" Background="#2C2C2C"  Text="" Margin="0,146,0,240" BorderBrush="AliceBlue" />
         <Button Name="LoginButton" Content="login" FontSize="20" Foreground="#2C2C2C" Background="AliceBlue" HorizontalAlignment="Center" Margin="0,317,0,0" VerticalAlignment="Top" Height="38" Width="152" Click="LoginButton_Click"/>

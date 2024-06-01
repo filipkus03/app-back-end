@@ -5,13 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:app_back_end"
         mc:Ignorable="d"
-        Title="main_kierownik" Height="450" Width="800" Closed="Window_Closed">
-    <Grid>
-        <Button Name="rezerwacja" Content="Rezerwacja" HorizontalAlignment="Left" Margin="50,33,0,0" VerticalAlignment="Top" Height="43" Width="92" Click="Button_Click"/>
-        <Button Name="zamowienie"  Content="zamówienie" HorizontalAlignment="Left" Margin="192,33,0,0" VerticalAlignment="Top" Height="43" Width="92" Click="zamowienie_Click"/>
-        <Button Name="pracownicy" Content="pracownicy" HorizontalAlignment="Left" Margin="334,33,0,0" VerticalAlignment="Top" Height="43" Width="92"/>
-        <Button Name="klienci" Content="klienci" HorizontalAlignment="Left" Margin="476,33,0,0" VerticalAlignment="Top" Height="43" Width="92"/>
-        <Button Name="material" Content="materiał" HorizontalAlignment="Left" Margin="618,33,0,0" VerticalAlignment="Top" Height="43" Width="92"/>
+        Title="main_kierownik" Height="900" Width="1000" Closed="Window_Closed">
+    <Grid Background="#2C2C2C">
+        <!-- Przyciski na górze okna -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20">
+            <Button Name="rezerwacja" Content="Rezerwacja" Margin="10" Width="100" Height="40" Background="#FFFFFF" Foreground="#2C2C2C" Click="Button_Click"/>
+            <Button Name="zamowienie"  Content="Zamówienie" Margin="10" Width="100" Height="40" Background="#FFFFFF" Foreground="#2C2C2C" Click="zamowienie_Click"/>
+            <Button Name="pracownicy" Content="Pracownicy" Margin="10" Width="100" Height="40" Background="#FFFFFF" Foreground="#2C2C2C" Click="pracownicy_Click"/>
+            <Button Name="klienci" Content="Klienci" Margin="10" Width="100" Height="40" Background="#FFFFFF" Foreground="#2C2C2C" Click="klienci_Click"/>
+            <Button Name="material" Content="Materiał" Margin="10" Width="100" Height="40" Background="#FFFFFF" Foreground="#2C2C2C" Click="material_Click"/>
+        </StackPanel>
 
+        <!-- DataGrid na dane klientów -->
+        <DataGrid Name="dataGrid" AutoGenerateColumns="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,80,10,10" Background="#FFFFFF" Foreground="#2C2C2C"/>
     </Grid>
 </Window>

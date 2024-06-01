@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:app_back_end.magazyn"
         mc:Ignorable="d"
-        Title="main_magazyn" Height="450" Width="800">
+        Title="main_magazyn" Height="900" Width="1000">
     <Grid>
         
     </Grid>

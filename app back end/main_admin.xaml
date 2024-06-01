@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:app_back_end.admin"
         mc:Ignorable="d"
-        Title="main_admin" Height="450" Width="800">
+        Title="main_admin" Height="900" Width="1000">
     <Grid>
         <Label  Content="Admin" HorizontalAlignment="Left" Margin="289,0,0,0" VerticalAlignment="Center" Height="70" Width="180"/>
 

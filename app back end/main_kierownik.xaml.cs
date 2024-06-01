@@ -1,25 +1,15 @@
-﻿using app_back_end.admin;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace app_back_end
 {
-    /// <summary>
-    /// Logika interakcji dla klasy main_kierownik.xaml
-    /// </summary>
     public partial class main_kierownik : Window
     {
+        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Lenovo\Desktop\app back end\app back end\data\db_local.mdf;Integrated Security=True";
         private Window mainwindow;
         public main_kierownik(Window window = null)
         {
@@ -30,13 +20,38 @@ namespace app_back_end
         public main_kierownik()
         {
             InitializeComponent();
+            LoadKlientData();
         }
 
-       
+        private void LoadKlientData()
+        {
+            DataTable klientData = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT Id_Zlecenia, Imie_Klienta, Nazwisko_Klienta, Data, Kwota, godzina_od, godzina_do, praca_wykonana FROM Tbl_Klient WHERE Data = @Data";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Data", DateTime.Today);
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(klientData);
+                    }
+                }
+            }
+
+            dataGrid.ItemsSource = klientData.DefaultView;
+        }
 
         private void zamowienie_Click(object sender, RoutedEventArgs e)
         {
-
+            Window Zamowienie = new zamowienie(this);
+            Zamowienie.Show();
+            Zamowienie.Focus();
+            Visibility = Visibility.Hidden;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -48,8 +63,31 @@ namespace app_back_end
         }
         private void Window_Closed(object sender, EventArgs e)
         {
-            // Przywracamy widoczność okna main_kierownik
             mainwindow.Visibility = Visibility.Visible;
+        }
+
+        private void pracownicy_Click(object sender, RoutedEventArgs e)
+        {
+            Window Pracownicy = new pracownicy(this);
+            Pracownicy.Show();
+            Pracownicy.Focus();
+            Visibility = Visibility.Hidden;
+        }
+
+        private void klienci_Click(object sender, RoutedEventArgs e)
+        {
+            Window Klienci = new klienci(this);
+            Klienci.Show();
+            Klienci.Focus();
+            Visibility = Visibility.Hidden;
+        }
+
+        private void material_Click(object sender, RoutedEventArgs e)
+        {
+            Window Material = new material(this);
+            Material.Show();
+            Material.Focus();
+            Visibility = Visibility.Hidden;
         }
     }
 }

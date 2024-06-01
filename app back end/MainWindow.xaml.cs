@@ -24,6 +24,10 @@ namespace app_back_end
     /// </summary>
     public partial class MainWindow : Window
     {
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Close();
+        }
         public MainWindow()
         {
             InitializeComponent();

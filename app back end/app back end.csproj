@@ -73,6 +73,9 @@
     <Compile Include="material.xaml.cs">
       <DependentUpon>material.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pracownicy.xaml.cs">
+      <DependentUpon>pracownicy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="rezerwacja.xaml.cs">
       <DependentUpon>rezerwacja.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="material.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pracownicy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

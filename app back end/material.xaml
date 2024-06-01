@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:app_back_end"
         mc:Ignorable="d"
-        Title="material" Height="450" Width="800">
+        Title="Material" Height="900" Width="1000" Closed="Window_Closed">
     <Grid>
-        
+        <DataGrid x:Name="MaterialsDataGrid" AutoGenerateColumns="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>
 </Window>
