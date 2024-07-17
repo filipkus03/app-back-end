@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Windows;
+using System.Data.SqlClient;
 
 namespace app_back_end.admin
 {
     public partial class main_admin : Window
     {
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Lenovo\Desktop\app back end\app back end\data\db_local.mdf;Integrated Security=True;Connect Timeout=30";
+        private DBConnection dbConnection = DBConnection.Instance;
         private Window mainWindow;
 
         public main_admin(Window mainWindow = null)
@@ -19,9 +19,8 @@ namespace app_back_end.admin
 
         private void LoadUserData()
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = dbConnection.Connect())
             {
-                conn.Open();
                 string query = "SELECT ID, Name, Login, Role FROM [dbo].[Tbl_Logins]";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -51,9 +50,8 @@ namespace app_back_end.admin
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = dbConnection.Connect())
             {
-                conn.Open();
                 string query = "INSERT INTO [dbo].[Tbl_Logins] (Name, Login, Password, Role) VALUES (@Name, @Login, @Password, @Role)";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -86,9 +84,8 @@ namespace app_back_end.admin
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = dbConnection.Connect())
             {
-                conn.Open();
                 string query = "DELETE FROM [dbo].[Tbl_Logins] WHERE Login = @Login";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {

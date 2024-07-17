@@ -1,70 +1,93 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.Windows;
 
 namespace app_back_end
 {
-    
     public partial class material : Window
     {
         private main_kierownik mainKierownikWindow;
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Lenovo\Desktop\app back end\app back end\data\db_local.mdf;Integrated Security=True";
+        private ObservableCollection<Material> materials = new ObservableCollection<Material>();
+        private DBConnection dbConnection = DBConnection.Instance;
+        private SqlDataReader dataReader;
+        private SqlConnection sqlConnection;
 
         public material(main_kierownik mainKierownikWindow)
         {
             InitializeComponent();
             this.mainKierownikWindow = mainKierownikWindow;
-            LoadMaterials();
+            MaterialsDataGrid.DataContext = this;
+            LoadMaterialsFromDB();
         }
 
         public material()
         {
             InitializeComponent();
-            LoadMaterials();
+            MaterialsDataGrid.DataContext = this;
+            LoadMaterialsFromDB();
         }
 
-        private void LoadMaterials()
+        private void LoadMaterialsFromDB()
         {
-            List<Material> materials = new List<Material>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
-                string query = "SELECT Id_czesci, Nazwa, Marka, Miejsce, Stan, Wolne, Cena FROM Tbl_Material";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (var connection = dbConnection.Connect())
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    string query = "SELECT Id_czesci, Nazwa, Marka, Miejsce, Stan, Wolne, Cena FROM Tbl_Material";
+                    using (var command = new SqlCommand(query, connection))
                     {
-                        while (reader.Read())
+                        using (var dataReader = command.ExecuteReader())
                         {
-                            materials.Add(new Material
+                            while (dataReader.Read())
                             {
-                                Id_czesci = reader.GetInt32(0),
-                                Nazwa = reader.GetString(1),
-                                Marka = reader.GetString(2),
-                                Miejsce = reader.GetString(3),
-                                Stan = reader.GetInt32(4),
-                                Wolne = reader.GetInt32(5),
-                                Cena = reader.GetDecimal(6)
-                            });
+                                materials.Add(new Material
+                                {
+                                    Id_czesci = dataReader.GetInt32(0),
+                                    Nazwa = dataReader.GetString(1),
+                                    Marka = dataReader.GetString(2),
+                                    Miejsce = dataReader.GetString(3),
+                                    Stan = dataReader.GetInt32(4),
+                                    Wolne = dataReader.GetInt32(5),
+                                    Cena = dataReader.GetDecimal(6)
+                                });
+                            }
                         }
                     }
                 }
             }
-
-            MaterialsDataGrid.ItemsSource = materials;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd ładowania materiałów: {ex.Message}");
+            }
         }
+
+
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            // Przywracamy widoczność okna main_kierownik
             if (mainKierownikWindow != null)
             {
                 mainKierownikWindow.Visibility = Visibility.Visible;
             }
         }
+
+        public ObservableCollection<Material> Materials
+        {
+            get { return materials; }
+            set
+            {
+                materials = value;
+                OnPropertyChanged(nameof(Materials));
+            }
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+        }
+
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
     }
 
     public class Material

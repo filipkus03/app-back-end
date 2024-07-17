@@ -8,7 +8,7 @@ namespace app_back_end
     public partial class zamowienie : Window
     {
         private main_kierownik mainKierownikWindow;
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Lenovo\Desktop\app back end\app back end\data\db_local.mdf;Integrated Security=True";
+        private DBConnection dbConnection = DBConnection.Instance;
 
         public zamowienie(main_kierownik mainKierownikWindow)
         {
@@ -27,9 +27,8 @@ namespace app_back_end
         {
             List<MaterialInfo> materials = new List<MaterialInfo>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = dbConnection.Connect())
             {
-                connection.Open();
                 string query = "SELECT Id_czesci, Nazwa, Marka, Miejsce, Stan, Wolne, Cena FROM Tbl_Material";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -79,9 +78,8 @@ namespace app_back_end
                 return;
             }
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = dbConnection.Connect())
             {
-                connection.Open();
                 string query = "INSERT INTO Tbl_Material (Id_czesci, Nazwa, Marka, Miejsce, Stan, Wolne, Cena) VALUES (@Id_czesci, @Nazwa, @Marka, @Miejsce, @Stan, @Wolne, @Cena)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -102,9 +100,8 @@ namespace app_back_end
 
         private bool IsPartAlreadyAdded(int idCzesci)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = dbConnection.Connect())
             {
-                connection.Open();
                 string query = "SELECT COUNT(*) FROM Tbl_Material WHERE Id_czesci = @Id_czesci";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -115,7 +112,6 @@ namespace app_back_end
                 }
             }
         }
-
 
         private void Window_Closed(object sender, EventArgs e)
         {

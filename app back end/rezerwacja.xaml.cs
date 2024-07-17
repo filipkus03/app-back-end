@@ -1,37 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace app_back_end
 {
-    /// <summary>
-    /// Logika interakcji dla klasy rezerwacja.xaml
-    /// </summary>
     public partial class rezerwacja : Window
     {
         private main_kierownik mainKierownikWindow;
+        private DBConnection dbConnection = DBConnection.Instance;
+
         public rezerwacja(main_kierownik mainKierownikWindow)
         {
             InitializeComponent();
             this.mainKierownikWindow = mainKierownikWindow;
         }
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Lenovo\Desktop\app back end\app back end\data\db_local.mdf;Integrated Security=True";
-        public rezerwacja()
-        {
-            InitializeComponent();
-            
-    }
 
         private void Zarezerwuj_Click(object sender, RoutedEventArgs e)
         {
@@ -39,12 +21,12 @@ namespace app_back_end
             int ilosc;
             int idZlecenia;
 
-            if (int.TryParse(CzescIDTextBox.Text, out idCzesci) && int.TryParse(IloscTextBox.Text, out ilosc) && int.TryParse(ZlecenieIDTextBox.Text, out idZlecenia))
+            if (int.TryParse(CzescIDTextBox.Text, out idCzesci) &&
+                int.TryParse(IloscTextBox.Text, out ilosc) &&
+                int.TryParse(ZlecenieIDTextBox.Text, out idZlecenia))
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = dbConnection.Connect())
                 {
-                    connection.Open();
-
                     SqlTransaction transaction = connection.BeginTransaction();
                     try
                     {
@@ -124,6 +106,10 @@ namespace app_back_end
                         transaction.Rollback();
                         WynikTextBlock.Text = $"Błąd rezerwacji: {ex.Message}";
                     }
+                    finally
+                    {
+                        dbConnection.Disconnect(connection); // Zamknij połączenie
+                    }
                 }
             }
             else
@@ -131,9 +117,6 @@ namespace app_back_end
                 WynikTextBlock.Text = "Proszę wprowadzić poprawne dane.";
             }
         }
-
-
-        
 
         private void Window_Closed(object sender, EventArgs e)
         {

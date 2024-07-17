@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="Material" Height="900" Width="1000" Closed="Window_Closed">
     <Grid>
-        <DataGrid x:Name="MaterialsDataGrid" AutoGenerateColumns="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <DataGrid Name="MaterialsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Materials}" Margin="0,10,0,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Części" Binding="{Binding Id_czesci}" />
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Nazwa}" />
+                <DataGridTextColumn Header="Marka" Binding="{Binding Marka}" />
+                <DataGridTextColumn Header="Miejsce" Binding="{Binding Miejsce}" />
+                <DataGridTextColumn Header="Stan" Binding="{Binding Stan}" />
+                <DataGridTextColumn Header="Wolne" Binding="{Binding Wolne}" />
+                <DataGridTextColumn Header="Cena" Binding="{Binding Cena}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>
