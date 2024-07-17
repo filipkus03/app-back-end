@@ -5,9 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:app_back_end.admin"
         mc:Ignorable="d"
-        Title="main_admin" Height="900" Width="1000">
+        Title="main_admin" Height="900" Width="1000" Closed="Window_Closed">
     <Grid>
-        <Label  Content="Admin" HorizontalAlignment="Left" Margin="289,0,0,0" VerticalAlignment="Center" Height="70" Width="180"/>
+        <StackPanel Margin="10">
+            <Button Content="Refresh Data" Click="RefreshDataButton_Click" Height="38" Margin="0,10,0,0"/>
 
+            <DataGrid Name="UserDataGrid" AutoGenerateColumns="False" Height="200" Margin="0,10,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="Auto" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                    <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
+                    <DataGridTextColumn Header="Role" Binding="{Binding Role}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Label Content="Name" />
+            <TextBox Name="NameTextBox" Margin="0,0,0,10" />
+            <Label Content="Login" />
+            <TextBox Name="LoginTextBox" Margin="0,0,0,10" />
+            <Label Content="Password" />
+            <PasswordBox Name="PasswordTextBox" Margin="0,0,0,10" />
+            <Label Content="Role" />
+            <TextBox Name="RoleTextBox" Margin="0,0,0,10" />
+
+            <Button Content="Add User" Click="AddUserButton_Click" Height="38" Margin="0,10,0,0"/>
+            <Button Content="Delete User" Click="DeleteUserButton_Click" Height="38" Margin="0,10,0,0"/>
+        </StackPanel>
     </Grid>
 </Window>

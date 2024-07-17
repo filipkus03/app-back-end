@@ -8,7 +8,6 @@ namespace app_back_end
     public partial class klienci : Window
     {
         private main_kierownik mainKierownikWindow;
-        private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Lenovo\Desktop\app back end\app back end\data\db_local.mdf;Integrated Security=True";
         private List<KlientInfo> klienciList;
 
         public klienci(main_kierownik mainKierownikWindow)
@@ -28,9 +27,8 @@ namespace app_back_end
         {
             klienciList = new List<KlientInfo>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = DBConnection.Instance.Connect())
             {
-                connection.Open();
                 string query = "SELECT Id_Zlecenia, Imie_Klienta, Nazwisko_Klienta, Data, Kwota, godzina_od, godzina_do, praca_wykonana FROM Tbl_Klient";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -69,16 +67,19 @@ namespace app_back_end
             string praca_wykonana = PracaWykonanaTextBox.Text;
 
             if (string.IsNullOrEmpty(imieKlienta) || string.IsNullOrEmpty(nazwiskoKlienta) || !int.TryParse(IdZleceniaTextBox.Text, out idZlecenia) ||
-                !decimal.TryParse(KwotaTextBox.Text, out kwota) || !TimeSpan.TryParse(GodzinaOdTextBox.Text, out godzina_od) ||
-                !TimeSpan.TryParse(GodzinaDoTextBox.Text, out godzina_do))
+                !decimal.TryParse(KwotaTextBox.Text, out kwota) || !TryParseTimeSpan(GodzinaOdTextBox.Text, out godzina_od) ||
+                !TryParseTimeSpan(GodzinaDoTextBox.Text, out godzina_do))
             {
                 MessageBox.Show("Wprowadź poprawne dane.");
                 return;
             }
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            // Normalizacja TimeSpan do zakresu akceptowalnego przez SqlDbType.Time
+            godzina_od = NormalizeTimeSpan(godzina_od);
+            godzina_do = NormalizeTimeSpan(godzina_do);
+
+            using (SqlConnection connection = DBConnection.Instance.Connect())
             {
-                connection.Open();
                 string query = "INSERT INTO Tbl_Klient (Id_Zlecenia, Imie_Klienta, Nazwisko_Klienta, Data, Kwota, godzina_od, godzina_do, praca_wykonana) " +
                                "VALUES (@Id_Zlecenia, @Imie_Klienta, @Nazwisko_Klienta, @Data, @Kwota, @godzina_od, @godzina_do, @praca_wykonana)";
 
@@ -100,6 +101,34 @@ namespace app_back_end
 
             // Odśwież dane
             LoadKlienci();
+        }
+
+        // Metoda pomocnicza do parsowania TimeSpan
+        private bool TryParseTimeSpan(string input, out TimeSpan result)
+        {
+            if (TimeSpan.TryParse(input, out result))
+            {
+                return true;
+            }
+
+            if (int.TryParse(input, out int hours))
+            {
+                result = new TimeSpan(hours, 0, 0);
+                return true;
+            }
+
+            result = default;
+            return false;
+        }
+
+        // Normalizacja TimeSpan do zakresu 0-24 godziny
+        private TimeSpan NormalizeTimeSpan(TimeSpan timeSpan)
+        {
+            while (timeSpan.TotalHours >= 24)
+            {
+                timeSpan = timeSpan.Subtract(TimeSpan.FromHours(24));
+            }
+            return timeSpan;
         }
 
         private void Window_Closed(object sender, EventArgs e)
